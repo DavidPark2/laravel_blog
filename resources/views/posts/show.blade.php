@@ -10,5 +10,19 @@
 
             <p>{{ $post->body }}</p>
         </div>
+
+        @foreach($post->comments as $comment)
+            <h1>{{ $comment->comment }}</h1>
+        @endforeach
+
+        <form method="POST" action="/posts/{{ $post->id }}/comment">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <input type="text" class="form-control" id="comment" name="comment" placeholder="Comment">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
     </div>
 @endsection
