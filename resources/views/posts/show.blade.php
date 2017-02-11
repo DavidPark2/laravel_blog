@@ -11,10 +11,17 @@
             <p>{{ $post->body }}</p>
         </div>
 
+        <h1>Comments</h1>
         @foreach($post->comments as $comment)
-            <h1>{{ $comment->comment }}</h1>
+            <div class="card">
+                <div class="card-block">
+                    <p>{{ $comment->comment }}</p>
+                </div>
+            </div>
         @endforeach
+        <hr>
 
+        <h1>Post comments</h1>
         <form method="POST" action="/posts/{{ $post->id }}/comment">
             {{ csrf_field() }}
             <div class="form-group">
